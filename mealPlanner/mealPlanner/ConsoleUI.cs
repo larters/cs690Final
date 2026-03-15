@@ -23,34 +23,39 @@ public class ConsoleUI {
                                     }));
 
             if(mode=="frige") {
-
-                var selectedMenu = AnsiConsole.Prompt(
-                                new SelectionPrompt<string>()
-                                    .Title("Select what to do")
-                                    .AddChoices(new[] {
-                                        "add ingredient","remove ingredient", "list all ingredients"
-                                    }));
                 Console.WriteLine("you are in fridge mode:" + dataManager.myfridge.owner);
 
 
+                var selectedMenu = AnsiConsole.Prompt(
+                                new SelectionPrompt<string>()
+                                    .Title("Select what to do:")
+                                    .AddChoices(new[] {
+                                        "add ingredient","remove ingredient", "list all ingredients"
+                                    }));
 
-                if(mode=="add ingredient") {
+
+                if(selectedMenu=="add ingredient") {
 
                     string ingredieantName = AnsiConsole.Prompt(new TextPrompt<string>("Enter what ingredieant you want to add :"));
 
                     ingredientData data = new ingredientData(ingredieantName);
-                }else if(mode=="remove ingredient") {
+                }else if(selectedMenu=="remove ingredient") {
 
                     string ingredieantName = AnsiConsole.Prompt(new TextPrompt<string>("Enter what ingredieant you want to remove :"));
 
                     ingredientData data = new ingredientData(ingredieantName);
-                }else if(mode=="list all ingredients") {
+                }else if(selectedMenu=="list all ingredients") {
 
-                    string ingredieantName = AnsiConsole.Prompt(new TextPrompt<string>("here is the ingredieant list:"));
 
+                    Console.WriteLine("here is the ingredieant list:");
+                    Console.WriteLine("chicken");
+                    Console.WriteLine("beef");
+                    Console.WriteLine("rice");
+                    Console.WriteLine("bread");
                 }
 
             } else if(mode=="recipe book") {
+                Console.WriteLine("you are in recipe book mode:" + dataManager.myrecipeBook.owner);
 
                 var selectedMenu = AnsiConsole.Prompt(
                                 new SelectionPrompt<string>()
@@ -58,7 +63,6 @@ public class ConsoleUI {
                                     .AddChoices(new[] {
                                         "add recipe","remove recipe", "list all recipes"
                                     }));
-                Console.WriteLine("you are in recipe mode:" + dataManager.myrecipeBook.owner);
 
                 if(selectedMenu=="add recipe") {
 
@@ -72,23 +76,38 @@ public class ConsoleUI {
                     ingredientData data = new ingredientData(ingredieantName);
                 }else if(selectedMenu=="list all recipes") {
 
-                    string ingredieantName = AnsiConsole.Prompt(new TextPrompt<string>("here is the recipe list:"));
-                }
 
+                    Console.WriteLine("here is the recipe list:");
+
+                    Console.WriteLine("gongbao chicken=chicken+peanuts+chili pepper");
+                    Console.WriteLine("stir fried beef=beef+vegetables");
+                    Console.WriteLine("chiken curry=curry sauce+beef+rice");
+                    Console.WriteLine("taco beef=ground beef+tomato sauce+tortillas");
+                    Console.WriteLine("garlic shrimp pasta=garlic+shrimp+pasta");
+                }
 
             }else if(mode=="cook") {
 
-                string ingredieantName = AnsiConsole.Prompt(new TextPrompt<string>("please select from recipe list:"));
-
+                    Console.WriteLine("please select from recipe list:");
+                    Console.WriteLine("gongbao chicken=chicken+peanuts+chili pepper");
+                    Console.WriteLine("stir fried beef=beef+vegetables");
+                    Console.WriteLine("chiken curry=curry sauce+beef+rice");
+                    Console.WriteLine("taco beef=ground beef+tomato sauce+tortillas");
+                    Console.WriteLine("garlic shrimp pasta=garlic+shrimp+pasta");
 
             }else if(mode=="request meal plan") {
-                string ingredieantName = AnsiConsole.Prompt(new TextPrompt<string>("here is the recipe you can cook for next week:"));
-
+                
+                    Console.WriteLine("here is the recipe you can cook for next week:");
+                    Console.WriteLine("Monday:gongbao chicken=chicken+peanuts+chili pepper");
+                    Console.WriteLine("Tuesday:stir fried beef=beef+vegetables");
+                    Console.WriteLine("Wednesday:chiken curry=curry sauce+beef+rice");
+                    Console.WriteLine("Thursday:taco beef=ground beef+tomato sauce+tortillas");
+                    Console.WriteLine("Friday:garlic shrimp pasta=garlic+shrimp+pasta");
             }else if(mode=="end") {
                 break;
             };
 
-        }while(true);
+        }while(false);
     }
 
     public static string AskForInput(string message) {
