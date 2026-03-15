@@ -31,8 +31,6 @@ public class fridge {
     public List<string> menu { get;set; }
 
     public fridge(string name) {
-        Console.WriteLine("#################fridge name:"+name);
-        this.owner = "";
         this.owner = name;
     }
 

@@ -11,8 +11,6 @@ public class DataManager {
 
     public DataManager() {
 
-
-        Console.WriteLine("#################DataManager new:");
         fileSaver = new FileSaver("ingredients.txt");
 
         myfridge = new fridge("Zoe's fridge");
