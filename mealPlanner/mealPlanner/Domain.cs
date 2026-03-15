@@ -43,7 +43,7 @@ public class fridge {
         return ingredient.Name;
     }
 
-    public List<ingredientData> ingredientList { get; }
+    public List<ingredientData> ingredientList;
 }
 
 
