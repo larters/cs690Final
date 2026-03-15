@@ -26,9 +26,10 @@ public class ConsoleUI {
 				            new SelectionPrompt<string>()
 				                .Title("Select what to do")
 				                .AddChoices(new[] {
-				                    "add","remove"
+				                    "add ingredient","remove ingredient", "list all ingredients"
 				                }));
-            Console.WriteLine("you are in fridge mode"+"Zoe");
+            Console.WriteLine("you are in fridge mode:" + dataManager.myfridge.owner);
+
 
             string ingredieantName = AnsiConsole.Prompt(new TextPrompt<string>("Enter what ingredieant you want to add :"));
 
@@ -36,6 +37,18 @@ public class ConsoleUI {
 
 
         } else if(mode=="recipe book") {
+
+            var selectedMenu = AnsiConsole.Prompt(
+				            new SelectionPrompt<string>()
+				                .Title("add ")
+				                .AddChoices(new[] {
+				                    "add recipe","remove recipe", "list all recipes"
+				                }));
+            Console.WriteLine("you are in recipe mode:"+"Zoe");
+
+            string ingredieantName = AnsiConsole.Prompt(new TextPrompt<string>("Enter what ingredieant you want to add :"));
+
+            ingredientData data = new ingredientData(ingredieantName);
 
         }else if(mode=="cook") {
 

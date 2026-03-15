@@ -3,22 +3,25 @@ namespace mealPlanner;
 public class DataManager {
 
     FileSaver fileSaver;
-    fridge myfridge;
-    recipeBook myrecipeBook;
+    public fridge myfridge;
+    public recipeBook myrecipeBook;
+
 
 
 
     public DataManager() {
 
+
+        Console.WriteLine("#################DataManager new:");
         fileSaver = new FileSaver("ingredients.txt");
 
-        fridge myfridge = new fridge("Zoe's fride");
+        myfridge = new fridge("Zoe's fridge");
 
         myfridge.menu = new List<string>();
         myfridge.menu.Add("add");
         myfridge.menu.Add("remove");
 
-        recipeBook myrecipeBook = new recipeBook("Zoe's recipeBook");
+        myrecipeBook = new recipeBook("Zoe's recipeBook");
 
         var ingredients = File.ReadAllLines("ingredients.txt");
 

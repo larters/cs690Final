@@ -27,10 +27,12 @@ public class recipeData {
 
 
 public class fridge {
-    public string owner { get; }
+    public string owner;
     public List<string> menu { get;set; }
 
     public fridge(string name) {
+        Console.WriteLine("#################fridge name:"+name);
+        this.owner = "";
         this.owner = name;
     }
 
@@ -48,9 +50,10 @@ public class fridge {
 
 
 public class recipeBook {
-    public string owner { get; }
+    public string owner;
 
     public recipeBook(string name) {
+        this.owner = "";
         this.owner = name;
     }
 
