@@ -52,14 +52,14 @@ public class ConsoleUI {
                 }else if(selectedMenu=="list all ingredients") {
 
 
-                    Console.WriteLine("here is the ingredieant list in your fridge:");
+                    Console.WriteLine("here is the ingredient list in your fridge:");
                     //Console.WriteLine("chicken");
                     //Console.WriteLine("beef");
                     //Console.WriteLine("rice");
                     //Console.WriteLine("bread");
                     
                     foreach(var ingredieant in dataManager.myfridge.ingredientList) {
-                        Console.WriteLine("listed already in your fridge: "+ingredieant.Name);
+                        Console.WriteLine("--"+ingredieant.Name);
                     }
                 }
 
