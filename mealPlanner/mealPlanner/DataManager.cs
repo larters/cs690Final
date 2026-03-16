@@ -26,7 +26,7 @@ public class DataManager {
         var ingredients = File.ReadAllLines("ingredients.txt");
 
         foreach(var ingredient in ingredients) {
-            Console.WriteLine("alredy in your fridge: "+ingredient);
+            //Console.WriteLine("alredy in your fridge: "+ingredient);
             myfridge.add(new ingredientData(ingredient));
         }
         
@@ -52,7 +52,7 @@ public class DataManager {
     public void SynchronizeIngredients() {
         File.Delete("ingredients.txt");
         foreach(var ingredient in myfridge.ingredientList) {
-            Console.WriteLine("SynchronizeIngredients append: "+ingredient.Name);
+            //Console.WriteLine("SynchronizeIngredients append: "+ingredient.Name);
             File.AppendAllText("ingredients.txt",ingredient+Environment.NewLine);
         }
     }
@@ -60,10 +60,10 @@ public class DataManager {
 
     public void removeIngredient(ingredientData ingredient) {
 
-        Console.WriteLine("ingredientList remove: "+ingredient.Name);
+        //Console.WriteLine("ingredientList remove: "+ingredient.Name);
 
         myfridge.ingredientList.Remove(ingredient);
-/*
+        /*
         foreach(var each in myfridge.ingredientList) {
             Console.WriteLine("each remove: "+each.Name);
             Console.WriteLine("to remove: "+ingredient.Name);
@@ -74,9 +74,11 @@ public class DataManager {
         }
         */
 
+        /*
         foreach(var each in myfridge.ingredientList) {
             Console.WriteLine("removeIngredient after: "+each.Name);
         }
+        */
 
         SynchronizeIngredients();
     }
