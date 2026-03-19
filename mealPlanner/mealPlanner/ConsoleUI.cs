@@ -23,6 +23,10 @@ public class ConsoleUI {
                                     }));
 
             if(mode=="frige") {
+                
+                /*=========================================
+                frige mode start
+                =========================================*/
                 Console.WriteLine("you are in fridge mode:" + dataManager.myfridge.owner);
 
 
@@ -62,8 +66,14 @@ public class ConsoleUI {
                         Console.WriteLine("--"+ingredieant.Name);
                     }
                 }
-
+                /*=========================================
+                frige mode end
+                =========================================*/
             } else if(mode=="recipe book") {
+
+                /*=========================================
+                recipe mode start
+                =========================================*/
                 Console.WriteLine("you are in recipe book mode:" + dataManager.myrecipeBook.owner);
 
                 var selectedMenu = AnsiConsole.Prompt(
@@ -94,24 +104,37 @@ public class ConsoleUI {
                     Console.WriteLine("taco beef=ground beef+tomato sauce+tortillas");
                     Console.WriteLine("garlic shrimp pasta=garlic+shrimp+pasta");
                 }
-
+                /*=========================================
+                recipe mode end
+                =========================================*/
             }else if(mode=="cook") {
+                /*=========================================
+                cook mode start
+                =========================================*/
 
-                    Console.WriteLine("please select from recipe list:");
-                    Console.WriteLine("gongbao chicken=chicken+peanuts+chili pepper");
-                    Console.WriteLine("stir fried beef=beef+vegetables");
-                    Console.WriteLine("chiken curry=curry sauce+beef+rice");
-                    Console.WriteLine("taco beef=ground beef+tomato sauce+tortillas");
-                    Console.WriteLine("garlic shrimp pasta=garlic+shrimp+pasta");
+                Console.WriteLine("please select from recipe list:");
+                Console.WriteLine("gongbao chicken=chicken+peanuts+chili pepper");
+                Console.WriteLine("stir fried beef=beef+vegetables");
+                Console.WriteLine("chiken curry=curry sauce+beef+rice");
+                Console.WriteLine("taco beef=ground beef+tomato sauce+tortillas");
+                Console.WriteLine("garlic shrimp pasta=garlic+shrimp+pasta");
+                /*=========================================
+                cook mode end
+                =========================================*/
 
             }else if(mode=="request meal plan") {
-                
-                    Console.WriteLine("here is the recipe you can cook for next week:");
-                    Console.WriteLine("Monday:gongbao chicken=chicken+peanuts+chili pepper");
-                    Console.WriteLine("Tuesday:stir fried beef=beef+vegetables");
-                    Console.WriteLine("Wednesday:chiken curry=curry sauce+beef+rice");
-                    Console.WriteLine("Thursday:taco beef=ground beef+tomato sauce+tortillas");
-                    Console.WriteLine("Friday:garlic shrimp pasta=garlic+shrimp+pasta");
+                /*=========================================
+                meal plan mode start
+                =========================================*/
+                Console.WriteLine("here is the recipe you can cook for next week:");
+                Console.WriteLine("Monday:gongbao chicken=chicken+peanuts+chili pepper");
+                Console.WriteLine("Tuesday:stir fried beef=beef+vegetables");
+                Console.WriteLine("Wednesday:chiken curry=curry sauce+beef+rice");
+                Console.WriteLine("Thursday:taco beef=ground beef+tomato sauce+tortillas");
+                Console.WriteLine("Friday:garlic shrimp pasta=garlic+shrimp+pasta");
+                /*=========================================
+                meal plan mode end
+                =========================================*/
             }else if(mode=="end") {
                 break;
             };
