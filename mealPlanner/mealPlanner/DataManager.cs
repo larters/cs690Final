@@ -60,7 +60,7 @@ public class DataManager {
 
         //Console.WriteLine("ingredientList remove: "+ingredient.Name);
 
-        myfridge.ingredientList.Remove(ingredient);
+        myfridge.remove(ingredient);
         /*
         foreach(var each in myfridge.ingredientList) {
             Console.WriteLine("each remove: "+each.Name);

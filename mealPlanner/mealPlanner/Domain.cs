@@ -45,6 +45,11 @@ public class fridge {
         return ingredient.Name;
     }
 
+    public string remove(ingredientData ingredient) {
+        ingredientList.Remove(ingredient);
+        return ingredient.Name;
+    }
+
     public List<ingredientData> ingredientList;
 }
 
