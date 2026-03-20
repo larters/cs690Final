@@ -87,7 +87,37 @@ public class recipeBookTest
     [Fact]
     public void Test1()
     {
-        recipeBook myfridge;
+        recipeBook myrecipeBook;
+
+        recipeData recipe1 = new recipeData("recipe1=ingredient1+ingredient2");
+        recipeData recipe2 = new recipeData("recipe2=ingredient3+ingredient4");
+
+        myrecipeBook = new recipeBook("my  recipeBook");
+
+        myrecipeBook.add(recipe1);        
+        myrecipeBook.add(recipe2);     
+
+        myrecipeBook.remove(recipe1);  
+
+
+        Assert.Equal(myrecipeBook.recipeList[0].ToString(), "recipe2=ingredient3+ingredient4");
+
+    }
+
+   [Fact]
+    public void Test2()
+    {
+        recipeBook myrecipeBook;
+
+        recipeData recipe1 = new recipeData("recipe1=ingredient1+ingredient2");
+
+        myrecipeBook = new recipeBook("my  recipeBook");
+
+        myrecipeBook.add(recipe1);        
+
+
+        Assert.Equal(myrecipeBook.recipeList[0].ToString(), "recipe1=ingredient1+ingredient2");
+
     }
 }
 
