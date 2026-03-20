@@ -19,8 +19,6 @@ public class DataManager {
         myfridge.menu.Add("add");
         myfridge.menu.Add("remove");
 
-        myfridge.ingredientList = new List<ingredientData>();        
-
         myrecipeBook = new recipeBook("Zoe's recipeBook");
 
         var ingredients = File.ReadAllLines("ingredients.txt");

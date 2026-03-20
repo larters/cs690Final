@@ -32,6 +32,8 @@ public class fridge {
 
     public fridge(string name) {
         this.owner = name;
+
+        this.ingredientList = new List<ingredientData>();
     }
 
     public override string ToString() {

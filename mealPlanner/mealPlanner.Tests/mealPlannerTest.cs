@@ -49,6 +49,15 @@ public class fridgeTest
     public void Test1()
     {
         fridge myfridge;
+
+        ingredientData ingredientTest = new ingredientData("ingredientTest");
+
+        myfridge = new fridge("test fridge");
+
+        myfridge.add(ingredientTest);        
+
+
+    
     }
 }
 
