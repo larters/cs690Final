@@ -56,10 +56,10 @@ public class fridge {
 
     public string consume(string ingredient) {
             foreach(var each in this.ingredientList) {
-                Console.WriteLine("each name: "+each.Name);
-                Console.WriteLine("to remove: "+ingredient);
+                //Console.WriteLine("each name: "+each.Name);
+                //Console.WriteLine("to remove: "+ingredient);
                 if(each.Name == ingredient){
-                    Console.WriteLine("found remove: "+each.Name);
+                    //Console.WriteLine("found remove: "+each.Name);
                     this.ingredientList.Remove(each);
                     break;
                 }
@@ -69,10 +69,10 @@ public class fridge {
 
     public bool hasiIgrediet(string ingredient) {
             foreach(var each in this.ingredientList) {
-                Console.WriteLine("each name: "+each.Name);
-                Console.WriteLine("to find: "+ingredient);
+                //Console.WriteLine("each name: "+each.Name);
+                //Console.WriteLine("to find: "+ingredient);
                 if(each.Name == ingredient){
-                    Console.WriteLine("found ingredient: "+each.Name);
+                    //Console.WriteLine("found ingredient: "+each.Name);
                     return true;
                 }
             }

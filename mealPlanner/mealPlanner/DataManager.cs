@@ -132,14 +132,14 @@ public class DataManager {
         int i = 0;
         foreach(var eachRecipe in myrecipeBook.recipeList) 
         {
-            Console.WriteLine("plan for : "+eachRecipe.ToString());        
+            //Console.WriteLine("plan for : "+eachRecipe.ToString());        
 
             // check is i is a valid recipe
             {
                 if(findIngredients(eachRecipe))
                 {
                     // add to list
-                    mealPlan = weekdays[i] + " : " + eachRecipe.ToString() + Environment.NewLine;
+                    mealPlan = mealPlan + weekdays[i] + " : " + eachRecipe.ToString() + Environment.NewLine;
                     i++;
                 }else{
                     // nothing, go for next recipe
@@ -158,7 +158,7 @@ public class DataManager {
 
         string ingrediets = recipe.ToString().Split('=')[1];
 
-        Console.WriteLine("searching recipe:" + recipe.Name);
+        //Console.WriteLine("searching recipe:" + recipe.Name);
 
         List<string> ingredientList = ingrediets.Split('+').ToList();
 
