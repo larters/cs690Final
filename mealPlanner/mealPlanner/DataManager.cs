@@ -87,7 +87,12 @@ public class DataManager {
     }
 
     public void removeRecipe(recipeData recipe) {
-        myrecipeBook.recipeList.Remove(recipe);
+        myrecipeBook.remove(recipe);
+        SynchronizeRecipe();
+    }
+
+    public void addRecipe(recipeData recipe) {
+        myrecipeBook.add(recipe);
         SynchronizeRecipe();
     }
 }

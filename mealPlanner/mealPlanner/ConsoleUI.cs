@@ -85,24 +85,34 @@ public class ConsoleUI {
 
                 if(selectedMenu=="add recipe") {
 
-                    string ingredieantName = AnsiConsole.Prompt(new TextPrompt<string>("Enter what recipe you want to add :"));
+                    string recipeName = AnsiConsole.Prompt(new TextPrompt<string>("Enter what recipe you want to add :"));
 
-                    ingredientData data = new ingredientData(ingredieantName);
+                    dataManager.addRecipe(new recipeData(recipeName));
                 }else if(selectedMenu=="remove recipe") {
 
-                    string ingredieantName = AnsiConsole.Prompt(new TextPrompt<string>("Enter what recipe you want to remove :"));
+                    recipeData selectedRecipe = AnsiConsole.Prompt(
+				            new SelectionPrompt<recipeData>()
+				                .Title("Select a recipe")
+				                .AddChoices(dataManager.myrecipeBook.recipeList));
 
-                    ingredientData data = new ingredientData(ingredieantName);
+
+                    dataManager.removeRecipe(selectedRecipe);
                 }else if(selectedMenu=="list all recipes") {
 
 
                     Console.WriteLine("here is the recipe list:");
 
+                    foreach(var each in dataManager.myrecipeBook.recipeList) {
+                        Console.WriteLine("--"+each.recipe);
+                    }
+
+                    /*
                     Console.WriteLine("gongbao chicken=chicken+peanuts+chili pepper");
                     Console.WriteLine("stir fried beef=beef+vegetables");
                     Console.WriteLine("chiken curry=curry sauce+beef+rice");
                     Console.WriteLine("taco beef=ground beef+tomato sauce+tortillas");
                     Console.WriteLine("garlic shrimp pasta=garlic+shrimp+pasta");
+                    */
                 }
                 /*=========================================
                 recipe mode end

@@ -15,12 +15,16 @@ public class ingredientData {
 public class recipeData {
     public string Name { get; }
 
+    public string recipe { get; }
+
     public recipeData(string name) {
-        this.Name = name;
+        this.recipe = name;
+        this.Name = name.Split('=')[0];
+
     }
 
     public override string ToString() {
-        return this.Name;
+        return this.recipe;
     }
 }
 
@@ -59,6 +63,8 @@ public class recipeBook {
 
     public recipeBook(string name) {
         this.owner = name;
+
+        this.recipeList = new List<recipeData>();
     }
 
     public override string ToString() {
@@ -67,6 +73,11 @@ public class recipeBook {
 
     public string add(recipeData recipe) {
         recipeList.Add(recipe);
+        return recipe.recipe;
+    }
+
+    public string remove(recipeData recipe) {
+        recipeList.Remove(recipe);
         return recipe.Name;
     }
 
