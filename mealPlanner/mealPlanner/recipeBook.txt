@@ -1,0 +1,6 @@
+gongbao chicken=chicken+peanuts+chili pepper
+stir fried beef=beef+vegetables
+chiken curry=curry sauce+beef+rice
+taco beef=ground beef+tomato sauce+tortillas
+garlic shrimp pasta=garlic+shrimp+pasta
+baked salmon=salmon+butter+mushroom
