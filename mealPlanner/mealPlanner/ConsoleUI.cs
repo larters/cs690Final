@@ -147,11 +147,17 @@ public class ConsoleUI {
                 meal plan mode start
                 =========================================*/
                 Console.WriteLine("here is the recipe you can cook for next week:");
+
+                Console.WriteLine(dataManager.mealPlan());
+
+                
+                /*
                 Console.WriteLine("Monday:gongbao chicken=chicken+peanuts+chili pepper");
                 Console.WriteLine("Tuesday:stir fried beef=beef+vegetables");
                 Console.WriteLine("Wednesday:chiken curry=curry sauce+beef+rice");
                 Console.WriteLine("Thursday:taco beef=ground beef+tomato sauce+tortillas");
                 Console.WriteLine("Friday:garlic shrimp pasta=garlic+shrimp+pasta");
+                */
                 /*=========================================
                 meal plan mode end
                 =========================================*/

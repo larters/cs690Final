@@ -108,21 +108,32 @@ public class DataManager {
             Console.WriteLine("you are consuming:"+ingredient.ToString());
 
             // remove from fridge
-
             myfridge.consume(ingredient);
-            /*
-            foreach(var each in myfridge.ingredientList) {
-                Console.WriteLine("each remove: "+each.Name);
-                Console.WriteLine("to remove: "+ingredient.Name);
-                if(each.Name == ingredient.Name){
-                    Console.WriteLine("found remove: "+each.Name);
-                    myfridge.ingredientList.Remove(each);
-                }
-            }
-            */
 
             SynchronizeIngredients();
         
         }
+    }
+
+
+
+    public string mealPlan() {
+
+        List<string> weekdays = new List<string>();
+
+        string mealPlan = "";
+
+        weekdays.Add("Monday");
+        weekdays.Add("Tuesday");
+        weekdays.Add("Wednesday");
+        weekdays.Add("Thursday");
+        weekdays.Add("Friday");
+
+        foreach(var eachday in weekdays) 
+        {
+            Console.WriteLine("plan for :"+eachday);        
+        }
+
+        return mealPlan;
     }
 }
