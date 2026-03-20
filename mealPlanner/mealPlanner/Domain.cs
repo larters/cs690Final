@@ -20,7 +20,6 @@ public class recipeData {
     public recipeData(string name) {
         this.recipe = name;
         this.Name = name.Split('=')[0];
-
     }
 
     public override string ToString() {
@@ -53,6 +52,21 @@ public class fridge {
         ingredientList.Remove(ingredient);
         return ingredient.Name;
     }
+
+
+    public string consume(string ingredient) {
+            foreach(var each in this.ingredientList) {
+                Console.WriteLine("each name: "+each.Name);
+                Console.WriteLine("to remove: "+ingredient);
+                if(each.Name == ingredient){
+                    Console.WriteLine("found remove: "+each.Name);
+                    this.ingredientList.Remove(each);
+                    break;
+                }
+            }
+        return ingredient;
+    }
+
 
     public List<ingredientData> ingredientList;
 }

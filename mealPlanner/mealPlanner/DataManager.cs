@@ -95,4 +95,34 @@ public class DataManager {
         myrecipeBook.add(recipe);
         SynchronizeRecipe();
     }
+
+    public void cook(recipeData recipe) {
+        string ingrediets = recipe.ToString().Split('=')[1];
+
+        Console.WriteLine("you are cooking:" + recipe.Name);
+
+        List<string> ingredientList = ingrediets.Split('+').ToList();
+
+    
+        foreach(var ingredient in ingredientList) {
+            Console.WriteLine("you are consuming:"+ingredient.ToString());
+
+            // remove from fridge
+
+            myfridge.consume(ingredient);
+            /*
+            foreach(var each in myfridge.ingredientList) {
+                Console.WriteLine("each remove: "+each.Name);
+                Console.WriteLine("to remove: "+ingredient.Name);
+                if(each.Name == ingredient.Name){
+                    Console.WriteLine("found remove: "+each.Name);
+                    myfridge.ingredientList.Remove(each);
+                }
+            }
+            */
+
+            SynchronizeIngredients();
+        
+        }
+    }
 }

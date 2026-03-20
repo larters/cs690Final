@@ -123,11 +123,21 @@ public class ConsoleUI {
                 =========================================*/
 
                 Console.WriteLine("please select from recipe list:");
+                    recipeData selectedRecipe = AnsiConsole.Prompt(
+				            new SelectionPrompt<recipeData>()
+				                .Title("Select a recipe")
+				                .AddChoices(dataManager.myrecipeBook.recipeList));
+
+
+                dataManager.cook(selectedRecipe);
+
+                /*
                 Console.WriteLine("gongbao chicken=chicken+peanuts+chili pepper");
                 Console.WriteLine("stir fried beef=beef+vegetables");
                 Console.WriteLine("chiken curry=curry sauce+beef+rice");
                 Console.WriteLine("taco beef=ground beef+tomato sauce+tortillas");
                 Console.WriteLine("garlic shrimp pasta=garlic+shrimp+pasta");
+                */
                 /*=========================================
                 cook mode end
                 =========================================*/
