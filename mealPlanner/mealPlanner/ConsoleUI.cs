@@ -139,7 +139,7 @@ public class ConsoleUI {
                 break;
             };
 
-        }while(false);
+        }while(true);
     }
 
     public static string AskForInput(string message) {

@@ -58,7 +58,6 @@ public class recipeBook {
     public string owner;
 
     public recipeBook(string name) {
-        this.owner = "";
         this.owner = name;
     }
 
