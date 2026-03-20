@@ -56,8 +56,29 @@ public class fridgeTest
 
         myfridge.add(ingredientTest);        
 
+        Assert.Equal(myfridge.ingredientList[0].ToString(), "ingredientTest");
 
-    
+    }
+
+
+    [Fact]
+    public void Test2()
+    {
+        fridge myfridge;
+
+        ingredientData ingredientTest1 = new ingredientData("ingredientTest1");
+        ingredientData ingredientTest2 = new ingredientData("ingredientTest2");
+
+        myfridge = new fridge("test fridge");
+
+        myfridge.add(ingredientTest1);        
+        myfridge.add(ingredientTest2);     
+
+        myfridge.remove(ingredientTest2);  
+
+
+        Assert.Equal(myfridge.ingredientList[0].ToString(), "ingredientTest1");
+
     }
 }
 
