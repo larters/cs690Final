@@ -67,6 +67,18 @@ public class fridge {
         return ingredient;
     }
 
+    public bool hasiIgrediet(string ingredient) {
+            foreach(var each in this.ingredientList) {
+                Console.WriteLine("each name: "+each.Name);
+                Console.WriteLine("to find: "+ingredient);
+                if(each.Name == ingredient){
+                    Console.WriteLine("found ingredient: "+each.Name);
+                    return true;
+                }
+            }
+        return false;
+    }
+
 
     public List<ingredientData> ingredientList;
 }

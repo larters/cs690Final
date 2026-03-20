@@ -129,11 +129,50 @@ public class DataManager {
         weekdays.Add("Thursday");
         weekdays.Add("Friday");
 
-        foreach(var eachday in weekdays) 
+        int i = 0;
+        foreach(var eachRecipe in myrecipeBook.recipeList) 
         {
-            Console.WriteLine("plan for :"+eachday);        
+            Console.WriteLine("plan for : "+eachRecipe.ToString());        
+
+            // check is i is a valid recipe
+            {
+                if(findIngredients(eachRecipe))
+                {
+                    // add to list
+                    mealPlan = weekdays[i] + " : " + eachRecipe.ToString() + Environment.NewLine;
+                    i++;
+                }else{
+                    // nothing, go for next recipe
+                }
+            }
+
         }
 
         return mealPlan;
     }
+
+
+
+    public bool findIngredients(recipeData recipe) {
+
+
+        string ingrediets = recipe.ToString().Split('=')[1];
+
+        Console.WriteLine("searching recipe:" + recipe.Name);
+
+        List<string> ingredientList = ingrediets.Split('+').ToList();
+
+        int i = 0;
+        bool ingredietAllFound = true;
+        foreach(var ingrediet in ingredientList) 
+        {
+            if(!myfridge.hasiIgrediet(ingrediet))
+            {
+                ingredietAllFound = false;
+                break;
+            }
+        }
+
+        return ingredietAllFound;
+    }    
 }
