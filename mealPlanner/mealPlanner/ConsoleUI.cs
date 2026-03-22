@@ -10,11 +10,12 @@ public class ConsoleUI {
         dataManager = new DataManager();
     }
 
+    // show UI
     public void Show() {
     
 
         do {
-
+            // main loop
             var mode = AnsiConsole.Prompt(
                                 new SelectionPrompt<string>()
                                     .Title("Please select mode")
@@ -29,7 +30,6 @@ public class ConsoleUI {
                 =========================================*/
                 Console.WriteLine("you are in fridge mode:" + dataManager.myfridge.owner);
 
-
                 var selectedMenu = AnsiConsole.Prompt(
                                 new SelectionPrompt<string>()
                                     .Title("Select what to do:")
@@ -37,22 +37,22 @@ public class ConsoleUI {
                                         "add ingredient","remove ingredient", "list all ingredients"
                                     }));
 
-
+                // to add ingredient
                 if(selectedMenu=="add ingredient") {
 
-                    string ingredieantName = AnsiConsole.Prompt(new TextPrompt<string>("Enter what ingredieant you want to add :"));
+                    string ingredientName = AnsiConsole.Prompt(new TextPrompt<string>("Enter what ingredient you want to add :"));
 
-                    dataManager.addIngredient(new ingredientData(ingredieantName));
+                    // just call dataManager
+                    dataManager.addIngredient(new ingredientData(ingredientName));
                 }else if(selectedMenu=="remove ingredient") {
-
-
-                    ingredientData selectedIngredieant = AnsiConsole.Prompt(
+                    // to remove ingredient
+                    ingredientData selectedingredient = AnsiConsole.Prompt(
 				            new SelectionPrompt<ingredientData>()
-				                .Title("Select an Ingredieant")
+				                .Title("Select an ingredient")
 				                .AddChoices(dataManager.myfridge.ingredientList));
 
-
-                    dataManager.removeIngredient(selectedIngredieant);
+                    // just call dataManager
+                    dataManager.removeIngredient(selectedingredient);
                 }else if(selectedMenu=="list all ingredients") {
 
 
@@ -62,8 +62,9 @@ public class ConsoleUI {
                     //Console.WriteLine("rice");
                     //Console.WriteLine("bread");
                     
-                    foreach(var ingredieant in dataManager.myfridge.ingredientList) {
-                        Console.WriteLine("--"+ingredieant.Name);
+                    // output 
+                    foreach(var ingredient in dataManager.myfridge.ingredientList) {
+                        Console.WriteLine("--"+ingredient.Name);
                     }
                 }
                 /*=========================================
@@ -84,22 +85,23 @@ public class ConsoleUI {
                                     }));
 
                 if(selectedMenu=="add recipe") {
-
+                    // add recipe
                     string recipeName = AnsiConsole.Prompt(new TextPrompt<string>("Enter what recipe you want to add :"));
 
+                    // call dataManager
                     dataManager.addRecipe(new recipeData(recipeName));
                 }else if(selectedMenu=="remove recipe") {
-
+                    // remove recipe
                     recipeData selectedRecipe = AnsiConsole.Prompt(
 				            new SelectionPrompt<recipeData>()
 				                .Title("Select a recipe")
 				                .AddChoices(dataManager.myrecipeBook.recipeList));
 
-
+                    // call dataManager
                     dataManager.removeRecipe(selectedRecipe);
                 }else if(selectedMenu=="list all recipes") {
 
-
+                    // list myrecipeBook
                     Console.WriteLine("here is the recipe list:");
 
                     foreach(var each in dataManager.myrecipeBook.recipeList) {
@@ -128,7 +130,7 @@ public class ConsoleUI {
 				                .Title("Select a recipe")
 				                .AddChoices(dataManager.myrecipeBook.recipeList));
 
-
+                // call dataManager
                 dataManager.cook(selectedRecipe);
 
                 /*
@@ -148,6 +150,7 @@ public class ConsoleUI {
                 =========================================*/
                 Console.WriteLine("here is the recipe you can cook for next week:");
 
+                // call mealPlan and output
                 Console.WriteLine(dataManager.mealPlan());
 
                 
@@ -162,14 +165,10 @@ public class ConsoleUI {
                 meal plan mode end
                 =========================================*/
             }else if(mode=="end") {
+                // end main loop
                 break;
             };
 
         }while(true);
-    }
-
-    public static string AskForInput(string message) {
-        Console.Write(message);
-        return Console.ReadLine();
     }
 }

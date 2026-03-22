@@ -13,8 +13,10 @@ public class ingredientData {
 }
 
 public class recipeData {
+    // left side of =
     public string Name { get; }
 
+    // full recipe string
     public string recipe { get; }
 
     public recipeData(string name) {
@@ -31,11 +33,12 @@ public class recipeData {
 
 public class fridge {
     public string owner;
-    public List<string> menu { get;set; }
+
 
     public fridge(string name) {
         this.owner = name;
 
+        // init ingredientList
         this.ingredientList = new List<ingredientData>();
     }
 
@@ -44,41 +47,50 @@ public class fridge {
     }
 
     public string add(ingredientData ingredient) {
+        // add into ingredientList
         ingredientList.Add(ingredient);
         return ingredient.Name;
     }
 
     public string remove(ingredientData ingredient) {
+        // remove from ingredientList
         ingredientList.Remove(ingredient);
         return ingredient.Name;
     }
 
 
     public string consume(string ingredient) {
-            foreach(var each in this.ingredientList) {
-                //Console.WriteLine("each name: "+each.Name);
-                //Console.WriteLine("to remove: "+ingredient);
-                if(each.Name == ingredient){
-                    //Console.WriteLine("found remove: "+each.Name);
-                    this.ingredientList.Remove(each);
-                    break;
-                }
+        // loop ingredientList
+        foreach(var each in this.ingredientList) {
+            //Console.WriteLine("each name: "+each.Name);
+            //Console.WriteLine("to remove: "+ingredient);
+            // match
+            if(each.Name == ingredient){
+                //Console.WriteLine("found remove: "+each.Name);
+                // remove from ingredientList
+                this.ingredientList.Remove(each);
+                break;
             }
+        }
+
         return ingredient;
     }
 
     public bool hasIngrediet(string ingredient) {
-            foreach(var each in this.ingredientList) {
-                //Console.WriteLine("each name: "+each.Name);
-                //Console.WriteLine("to find: "+ingredient);
-                if(each.Name == ingredient){
-                    //Console.WriteLine("found ingredient: "+each.Name);
-                    return true;
-                }
+        // loop ingredientList
+        foreach(var each in this.ingredientList) {
+            //Console.WriteLine("each name: "+each.Name);
+            //Console.WriteLine("to find: "+ingredient);
+            // find the same name 
+            if(each.Name == ingredient){
+                // found match
+                //Console.WriteLine("found ingredient: "+each.Name);
+                return true;
             }
+        }
+
         return false;
     }
-
 
     public List<ingredientData> ingredientList;
 }
@@ -90,6 +102,7 @@ public class recipeBook {
     public recipeBook(string name) {
         this.owner = name;
 
+        // init list
         this.recipeList = new List<recipeData>();
     }
 
@@ -98,11 +111,13 @@ public class recipeBook {
     }
 
     public string add(recipeData recipe) {
+        // add to recipeList
         recipeList.Add(recipe);
         return recipe.recipe;
     }
 
     public string remove(recipeData recipe) {
+        // remove from recipeList
         recipeList.Remove(recipe);
         return recipe.Name;
     }
