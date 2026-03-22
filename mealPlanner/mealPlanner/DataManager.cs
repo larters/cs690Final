@@ -141,6 +141,13 @@ public class DataManager {
                     // add to list
                     mealPlan = mealPlan + weekdays[i] + " : " + eachRecipe.ToString() + Environment.NewLine;
                     i++;
+
+                    // max 5 needed
+                    if(i > 4)
+                    {
+                        break;
+
+                    }
                 }else{
                     // nothing, go for next recipe
                 }
