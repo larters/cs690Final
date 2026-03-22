@@ -19,13 +19,13 @@ public class ConsoleUI {
                                 new SelectionPrompt<string>()
                                     .Title("Please select mode")
                                     .AddChoices(new[] {
-                                        "frige","recipe book","cook","request meal plan","end"
+                                        "fridge","recipe book","cook","request meal plan","end"
                                     }));
 
-            if(mode=="frige") {
+            if(mode=="fridge") {
                 
                 /*=========================================
-                frige mode start
+                fridge mode start
                 =========================================*/
                 Console.WriteLine("you are in fridge mode:" + dataManager.myfridge.owner);
 
@@ -67,7 +67,7 @@ public class ConsoleUI {
                     }
                 }
                 /*=========================================
-                frige mode end
+                fridge mode end
                 =========================================*/
             } else if(mode=="recipe book") {
 

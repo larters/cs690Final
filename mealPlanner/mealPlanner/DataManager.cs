@@ -166,7 +166,7 @@ public class DataManager {
         bool ingredietAllFound = true;
         foreach(var ingrediet in ingredientList) 
         {
-            if(!myfridge.hasiIgrediet(ingrediet))
+            if(!myfridge.hasIngrediet(ingrediet))
             {
                 ingredietAllFound = false;
                 break;
