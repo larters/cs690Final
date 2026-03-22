@@ -78,8 +78,54 @@ public class fridgeTest
 
 
         Assert.Equal(myfridge.ingredientList[0].ToString(), "ingredientTest1");
+        Assert.Equal(myfridge.ingredientList.Count, 1);
 
     }
+
+
+    [Fact]
+    public void Test3()
+    {
+        fridge myfridge;
+
+        ingredientData ingredientTest1 = new ingredientData("ingredientTest1");
+        ingredientData ingredientTest2 = new ingredientData("ingredientTest2");
+
+        myfridge = new fridge("test fridge");
+
+        myfridge.add(ingredientTest1);        
+        myfridge.add(ingredientTest2);     
+
+        myfridge.consume("ingredientTest2");  
+
+
+        Assert.Equal(myfridge.ingredientList[0].ToString(), "ingredientTest1");
+        Assert.Equal(myfridge.ingredientList.Count, 1);
+    }
+
+
+    [Fact]
+    public void Test4()
+    {
+        fridge myfridge;
+
+        ingredientData ingredientTest1 = new ingredientData("ingredientTest1");
+        ingredientData ingredientTest2 = new ingredientData("ingredientTest2");
+
+        myfridge = new fridge("test fridge");
+
+        myfridge.add(ingredientTest1);        
+        myfridge.add(ingredientTest2);     
+
+        var res1 = myfridge.hasIngrediet("ingredientTest2");  
+        var res2 = myfridge.hasIngrediet("ingredientTest3");  
+
+
+        Assert.Equal(res1, true);
+        Assert.Equal(res2, false);
+    }
+
+    
 }
 
 public class recipeBookTest
@@ -119,5 +165,7 @@ public class recipeBookTest
         Assert.Equal(myrecipeBook.recipeList[0].ToString(), "recipe1=ingredient1+ingredient2");
 
     }
+
+
 }
 
