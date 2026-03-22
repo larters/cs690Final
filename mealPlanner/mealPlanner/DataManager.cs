@@ -19,8 +19,6 @@ public class DataManager {
         myfridge.menu.Add("add");
         myfridge.menu.Add("remove");
 
-        myfridge.ingredientList = new List<ingredientData>();        
-
         myrecipeBook = new recipeBook("Zoe's recipeBook");
 
         var ingredients = File.ReadAllLines("ingredients.txt");
@@ -62,7 +60,7 @@ public class DataManager {
 
         //Console.WriteLine("ingredientList remove: "+ingredient.Name);
 
-        myfridge.ingredientList.Remove(ingredient);
+        myfridge.remove(ingredient);
         /*
         foreach(var each in myfridge.ingredientList) {
             Console.WriteLine("each remove: "+each.Name);
@@ -89,7 +87,99 @@ public class DataManager {
     }
 
     public void removeRecipe(recipeData recipe) {
-        myrecipeBook.recipeList.Remove(recipe);
+        myrecipeBook.remove(recipe);
         SynchronizeRecipe();
     }
+
+    public void addRecipe(recipeData recipe) {
+        myrecipeBook.add(recipe);
+        SynchronizeRecipe();
+    }
+
+    public void cook(recipeData recipe) {
+        string ingrediets = recipe.ToString().Split('=')[1];
+
+        Console.WriteLine("you are cooking:" + recipe.Name);
+
+        List<string> ingredientList = ingrediets.Split('+').ToList();
+
+    
+        foreach(var ingredient in ingredientList) {
+            Console.WriteLine("you are consuming:"+ingredient.ToString());
+
+            // remove from fridge
+            myfridge.consume(ingredient);
+
+            SynchronizeIngredients();
+        
+        }
+    }
+
+
+
+    public string mealPlan() {
+
+        List<string> weekdays = new List<string>();
+
+        string mealPlan = "";
+
+        weekdays.Add("Monday");
+        weekdays.Add("Tuesday");
+        weekdays.Add("Wednesday");
+        weekdays.Add("Thursday");
+        weekdays.Add("Friday");
+
+        int i = 0;
+        foreach(var eachRecipe in myrecipeBook.recipeList) 
+        {
+            //Console.WriteLine("plan for : "+eachRecipe.ToString());        
+
+            // check is i is a valid recipe
+            {
+                if(findIngredients(eachRecipe))
+                {
+                    // add to list
+                    mealPlan = mealPlan + weekdays[i] + " : " + eachRecipe.ToString() + Environment.NewLine;
+                    i++;
+
+                    // max 5 needed
+                    if(i > 4)
+                    {
+                        break;
+
+                    }
+                }else{
+                    // nothing, go for next recipe
+                }
+            }
+
+        }
+
+        return mealPlan;
+    }
+
+
+
+    public bool findIngredients(recipeData recipe) {
+
+
+        string ingrediets = recipe.ToString().Split('=')[1];
+
+        //Console.WriteLine("searching recipe:" + recipe.Name);
+
+        List<string> ingredientList = ingrediets.Split('+').ToList();
+
+        int i = 0;
+        bool ingredietAllFound = true;
+        foreach(var ingrediet in ingredientList) 
+        {
+            if(!myfridge.hasIngrediet(ingrediet))
+            {
+                ingredietAllFound = false;
+                break;
+            }
+        }
+
+        return ingredietAllFound;
+    }    
 }

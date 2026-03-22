@@ -19,13 +19,13 @@ public class ConsoleUI {
                                 new SelectionPrompt<string>()
                                     .Title("Please select mode")
                                     .AddChoices(new[] {
-                                        "frige","recipe book","cook","request meal plan","end"
+                                        "fridge","recipe book","cook","request meal plan","end"
                                     }));
 
-            if(mode=="frige") {
+            if(mode=="fridge") {
                 
                 /*=========================================
-                frige mode start
+                fridge mode start
                 =========================================*/
                 Console.WriteLine("you are in fridge mode:" + dataManager.myfridge.owner);
 
@@ -67,7 +67,7 @@ public class ConsoleUI {
                     }
                 }
                 /*=========================================
-                frige mode end
+                fridge mode end
                 =========================================*/
             } else if(mode=="recipe book") {
 
@@ -85,24 +85,34 @@ public class ConsoleUI {
 
                 if(selectedMenu=="add recipe") {
 
-                    string ingredieantName = AnsiConsole.Prompt(new TextPrompt<string>("Enter what recipe you want to add :"));
+                    string recipeName = AnsiConsole.Prompt(new TextPrompt<string>("Enter what recipe you want to add :"));
 
-                    ingredientData data = new ingredientData(ingredieantName);
+                    dataManager.addRecipe(new recipeData(recipeName));
                 }else if(selectedMenu=="remove recipe") {
 
-                    string ingredieantName = AnsiConsole.Prompt(new TextPrompt<string>("Enter what recipe you want to remove :"));
+                    recipeData selectedRecipe = AnsiConsole.Prompt(
+				            new SelectionPrompt<recipeData>()
+				                .Title("Select a recipe")
+				                .AddChoices(dataManager.myrecipeBook.recipeList));
 
-                    ingredientData data = new ingredientData(ingredieantName);
+
+                    dataManager.removeRecipe(selectedRecipe);
                 }else if(selectedMenu=="list all recipes") {
 
 
                     Console.WriteLine("here is the recipe list:");
 
+                    foreach(var each in dataManager.myrecipeBook.recipeList) {
+                        Console.WriteLine("--"+each.recipe);
+                    }
+
+                    /*
                     Console.WriteLine("gongbao chicken=chicken+peanuts+chili pepper");
                     Console.WriteLine("stir fried beef=beef+vegetables");
                     Console.WriteLine("chiken curry=curry sauce+beef+rice");
                     Console.WriteLine("taco beef=ground beef+tomato sauce+tortillas");
                     Console.WriteLine("garlic shrimp pasta=garlic+shrimp+pasta");
+                    */
                 }
                 /*=========================================
                 recipe mode end
@@ -113,11 +123,21 @@ public class ConsoleUI {
                 =========================================*/
 
                 Console.WriteLine("please select from recipe list:");
+                    recipeData selectedRecipe = AnsiConsole.Prompt(
+				            new SelectionPrompt<recipeData>()
+				                .Title("Select a recipe")
+				                .AddChoices(dataManager.myrecipeBook.recipeList));
+
+
+                dataManager.cook(selectedRecipe);
+
+                /*
                 Console.WriteLine("gongbao chicken=chicken+peanuts+chili pepper");
                 Console.WriteLine("stir fried beef=beef+vegetables");
                 Console.WriteLine("chiken curry=curry sauce+beef+rice");
                 Console.WriteLine("taco beef=ground beef+tomato sauce+tortillas");
                 Console.WriteLine("garlic shrimp pasta=garlic+shrimp+pasta");
+                */
                 /*=========================================
                 cook mode end
                 =========================================*/
@@ -127,11 +147,17 @@ public class ConsoleUI {
                 meal plan mode start
                 =========================================*/
                 Console.WriteLine("here is the recipe you can cook for next week:");
+
+                Console.WriteLine(dataManager.mealPlan());
+
+                
+                /*
                 Console.WriteLine("Monday:gongbao chicken=chicken+peanuts+chili pepper");
                 Console.WriteLine("Tuesday:stir fried beef=beef+vegetables");
                 Console.WriteLine("Wednesday:chiken curry=curry sauce+beef+rice");
                 Console.WriteLine("Thursday:taco beef=ground beef+tomato sauce+tortillas");
                 Console.WriteLine("Friday:garlic shrimp pasta=garlic+shrimp+pasta");
+                */
                 /*=========================================
                 meal plan mode end
                 =========================================*/
@@ -139,7 +165,7 @@ public class ConsoleUI {
                 break;
             };
 
-        }while(false);
+        }while(true);
     }
 
     public static string AskForInput(string message) {
